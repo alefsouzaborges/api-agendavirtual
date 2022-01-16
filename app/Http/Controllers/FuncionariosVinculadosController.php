@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuarios;
+use App\Models\FuncionariosVinculados;
 
-class UsuarioController extends Controller
+class FuncionariosVinculadosController extends Controller
 {
+
     public function index()
     {
-        return Usuarios::all();
+        return FuncionariosVinculados::all();
     }
 
     public function store(Request $request)
@@ -27,6 +28,7 @@ class UsuarioController extends Controller
         //
     }
 
+    
     public function update(Request $request, $id)
     {
         //
