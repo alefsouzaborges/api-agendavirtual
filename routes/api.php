@@ -8,4 +8,4 @@ use App\Http\Controllers\FuncionariosVinculadosController;
 
 Route::get('usuarios/', [UsuarioController::class, 'index']);
 /////////////////////////////////////////////////////////////
-Route::get('funcionarios/vinculados', [FuncionariosVinculadosController::class, 'index']);
+Route::get('funcionarios/vinculados/', [FuncionariosVinculadosController::class, 'index']);
