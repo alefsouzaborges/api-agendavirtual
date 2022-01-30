@@ -6,6 +6,8 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\FuncionariosVinculadosController;
 use App\Http\Controllers\EspecialidadesController;
 use App\Http\Controllers\SolicitacoesController;
+use App\Http\Controllers\AberturaController;
+use App\Http\Controllers\ServicosController;
 
 
 Route::get('usuarios/', [UsuarioController::class, 'index']);
@@ -27,4 +29,10 @@ Route::get('/usuarios/buscar_empresa/{cpf_cnpj}', [UsuarioController::class, 'bu
 Route::post('/solicitacoes', [SolicitacoesController::class, 'store']);
 Route::post('/solicitacoes/aceitar_solicitacoes', [SolicitacoesController::class, 'aceitarSolicitacao']);
 Route::post('/solicitacoes/recusar_solicitacoes', [SolicitacoesController::class, 'recusarSolicitacao']);
-
+////////////////////////////////////////////////////////////
+Route::get('/abertura', [AberturaController::class, 'index']);
+Route::post('/abertura/gerar_horarios', [AberturaController::class, 'store']);
+Route::post('/abertura/deletar_abertura', [AberturaController::class, 'destroy']);
+////////////////////////////////////////////////////////////
+Route::post('/servicos/criar_servico', [ServicosController::class, 'store']);
+Route::get('/usuarios/listar_funcionarios_vinculados/{email}', [FuncionariosVinculadosController::class, 'listar_funcionarios']);

@@ -14,7 +14,22 @@ class ServicosController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $Servico = new Servicos;
+        $Servico->descricao = $request['descricao'];
+        $Servico->tempo = $request['tempo'];
+        $Servico->valor = $request['valor'];
+        $Servico->empresa = $request['empresa'];
+
+        if($Servico->save()){
+
+            return response()->json(array('success' => true, 'response' => 'Serviço criado com sucesso!'));
+
+        }else{
+
+            return response()->json(array('success' => true, 'response' => 'Falha ao criar o serviço.'));
+
+        }
+
     }
 
     public function show($id)

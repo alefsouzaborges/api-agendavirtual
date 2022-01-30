@@ -9,7 +9,6 @@ class Abertura extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'horario',
-        'empresa'
+        'abertura'
     ];
 }

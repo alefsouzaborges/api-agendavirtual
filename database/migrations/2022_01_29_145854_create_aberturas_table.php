@@ -15,8 +15,7 @@ class CreateAberturasTable extends Migration
     {
         Schema::create('aberturas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('horario', 10);
-            $table->string('empresa', 60);
+            $table->string('horario');
             $table->timestamps();
         });
     }
