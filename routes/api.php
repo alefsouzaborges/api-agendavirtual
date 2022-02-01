@@ -12,6 +12,7 @@ use App\Http\Controllers\ServicosController;
 
 Route::get('usuarios/', [UsuarioController::class, 'index']);
 Route::post('usuarios/login', [UsuarioController::class, 'login']);
+Route::get('/usuarios/listar_funcionarios_vinculados/{email}', [FuncionariosVinculadosController::class, 'listar_funcionarios']);
 /////////////////////////////////////////////////////////////
 Route::post('usuarios/criar_conta_cliente', [UsuarioController::class, 'createaccountClient']);
 Route::post('usuarios/criar_conta_empresa', [UsuarioController::class, 'createaccountEmpresa']);
@@ -35,4 +36,7 @@ Route::post('/abertura/gerar_horarios', [AberturaController::class, 'store']);
 Route::post('/abertura/deletar_abertura', [AberturaController::class, 'destroy']);
 ////////////////////////////////////////////////////////////
 Route::post('/servicos/criar_servico', [ServicosController::class, 'store']);
-Route::get('/usuarios/listar_funcionarios_vinculados/{email}', [FuncionariosVinculadosController::class, 'listar_funcionarios']);
+Route::get('/servicos/servicos_vincular/{emailEmpresa}', [ServicosController::class, 'servicos_vincular']);
+Route::get('/servicos/servicos_vinculados/{email}', [ServicosController::class, 'servicos_vinculados']);
+Route::get('/servicos/vincular_servico/{id}/{email}', [ServicosController::class, 'vincularServico']);
+Route::get('/servicos/desvincular_servico/{id}/{email}', [ServicosController::class, 'desvincularServico']);

@@ -15,7 +15,7 @@ class CreateFuncionariosVinculadosTable extends Migration
     {
         Schema::create('funcionarios_vinculados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email_funcinario', 60);
+            $table->string('email_funcionario', 60);
             $table->string('email_empresa', 60);
             $table->string('especialidade', 60);
             $table->string('status', 10);

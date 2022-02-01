@@ -59,35 +59,35 @@ class SolicitacoesController extends Controller
         $userId = $request['userId'];
         $userLogado = $request['userLogado'];
 
+
         $updateSolicitacao = DB::update("UPDATE solicitacoes SET situacao = 'Aceita' WHERE id = '${id}'");
 
-        if($updateSolicitacao){
+         if($updateSolicitacao){
 
-            $updateUsuario = DB::update("UPDATE usuarios SET tipo = 'Funcionario' WHERE id = '${userId}'");
+             $updateUsuario = DB::update("UPDATE usuarios SET tipo = 'Funcionario' WHERE id = '${userId}'");
             
            
-            if($updateUsuario){
+             if($updateUsuario){
 
-                $buscarFuncionario = DB::select("SELECT email FROM usuarios WHERE id = '${userId}' LIMIT 1");
+                 $buscarFuncionario = DB::select("SELECT email FROM usuarios WHERE id = '${userId}' LIMIT 1");
+                 $FuncionariosVinculados = new FuncionariosVinculados;
+                 $FuncionariosVinculados->email_funcionario = $buscarFuncionario[0]->email;
+                 $FuncionariosVinculados->email_empresa = $userLogado;
+                 $FuncionariosVinculados->especialidade = 'Padrao';
+                 $FuncionariosVinculados->status = 'Ativo';
+                 $FuncionariosVinculados->save();
 
-                $FuncionariosVinculados = new FuncionariosVinculados;
-                $FuncionariosVinculados->email_funcionario = $buscarFuncionario[0]->email;
-                $FuncionariosVinculados->email_empresa = $userLogado;
-                $FuncionariosVinculados->especialidade = 'Padrao';
-                $FuncionariosVinculados->status = 'Ativo';
-                $FuncionariosVinculados->save();
+          
+             }
 
 
-            }
+             return response()->json(array('success' => true, 'response' => 'Solicitação aceita com sucesso!'));
 
+         }else{
 
-            return response()->json(array('success' => true, 'response' => 'Solicitação aceita com sucesso!'));
+             return response()->json(array('success' => false, 'response' => 'error'));
 
-        }else{
-
-            return response()->json(array('success' => false, 'response' => 'error'));
-
-        }
+         }
     }
 
 

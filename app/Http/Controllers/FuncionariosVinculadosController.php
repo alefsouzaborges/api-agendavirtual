@@ -43,7 +43,9 @@ class FuncionariosVinculadosController extends Controller
 
     public function listar_funcionarios($email)
     {
-        $ListarFuncioarios = DB::select("SELECT * FROM funcionarios_vinculados");
+        $ListarFuncioarios = DB::select("SELECT * FROM funcionarios_vinculados 
+        RIGHT JOIN usuarios ON(funcionarios_vinculados.email_funcionario = usuarios.email) 
+        WHERE email_empresa = '${email}' and status = 'Ativo'");
 
         
         if($ListarFuncioarios){
