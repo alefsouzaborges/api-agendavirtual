@@ -9,6 +9,7 @@ use App\Http\Controllers\SolicitacoesController;
 use App\Http\Controllers\AberturaController;
 use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\AnoController;
+use App\Http\Controllers\MesesController;
 
 
 Route::get('usuarios/', [UsuarioController::class, 'index']);
@@ -44,3 +45,6 @@ Route::get('/servicos/desvincular_servico/{id}/{email}', [ServicosController::cl
 //////////////////////////////////////////////////////
 Route::get('/ano', [AnoController::class, 'index']);
 Route::post('/ano', [AnoController::class, 'store']);
+Route::get('/mes', [MesesController::class, 'index']);
+Route::post('/mes', [MesesController::class, 'store']);
+
