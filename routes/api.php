@@ -10,6 +10,7 @@ use App\Http\Controllers\AberturaController;
 use App\Http\Controllers\ServicosController;
 use App\Http\Controllers\AnoController;
 use App\Http\Controllers\MesesController;
+use App\Http\Controllers\DiasController;
 
 
 Route::get('usuarios/', [UsuarioController::class, 'index']);
@@ -45,6 +46,10 @@ Route::get('/servicos/desvincular_servico/{id}/{email}', [ServicosController::cl
 //////////////////////////////////////////////////////
 Route::get('/ano', [AnoController::class, 'index']);
 Route::post('/ano', [AnoController::class, 'store']);
+//////////////////////////////////////////////////////
 Route::get('/mes', [MesesController::class, 'index']);
 Route::post('/mes', [MesesController::class, 'store']);
+//////////////////////////////////////////////////////
+Route::get('/dia', [DiasController::class, 'index']);
+Route::post('/dia', [DiasController::class, 'store']);
 
