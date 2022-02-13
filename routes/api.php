@@ -8,6 +8,7 @@ use App\Http\Controllers\EspecialidadesController;
 use App\Http\Controllers\SolicitacoesController;
 use App\Http\Controllers\AberturaController;
 use App\Http\Controllers\ServicosController;
+use App\Http\Controllers\AnoController;
 
 
 Route::get('usuarios/', [UsuarioController::class, 'index']);
@@ -40,3 +41,6 @@ Route::get('/servicos/servicos_vincular/{emailEmpresa}', [ServicosController::cl
 Route::get('/servicos/servicos_vinculados/{email}', [ServicosController::class, 'servicos_vinculados']);
 Route::get('/servicos/vincular_servico/{id}/{email}', [ServicosController::class, 'vincularServico']);
 Route::get('/servicos/desvincular_servico/{id}/{email}', [ServicosController::class, 'desvincularServico']);
+//////////////////////////////////////////////////////
+Route::get('/ano', [AnoController::class, 'index']);
+Route::post('/ano', [AnoController::class, 'store']);
