@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiasTable extends Migration
+class CreateDiasDisponiveisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateDiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('dias', function (Blueprint $table) {
+        Schema::create('dias_disponiveis', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('email_empresa');
+            $table->string('email_funcionario');
             $table->string('dia');
             $table->string('nome_dia');
             $table->string('mes');
             $table->string('nome_mes');
-            $table->string('ano');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateDiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dias');
+        Schema::dropIfExists('dias_disponiveis');
     }
 }

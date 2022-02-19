@@ -50,6 +50,6 @@ Route::post('/ano', [AnoController::class, 'store']);
 Route::get('/mes', [MesesController::class, 'index']);
 Route::post('/mes', [MesesController::class, 'store']);
 //////////////////////////////////////////////////////
-Route::get('/dia', [DiasController::class, 'index']);
+Route::get('/dia/{mes}/{ano}', [DiasController::class, 'index']);
 Route::post('/dia', [DiasController::class, 'store']);
 

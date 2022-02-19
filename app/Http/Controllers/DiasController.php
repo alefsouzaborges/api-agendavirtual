@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\dias;
 
 class DiasController extends Controller
 {
-    public function index()
+    public function index($mes, $ano)
     {
-        $Dias =  dias::all();
+        $Dias =  DB::select("SELECT * FROM dias WHERE nome_mes = '${mes}' and ano = '${ano}'");
 
         if(count($Dias) > 0){
 
@@ -40,6 +41,9 @@ class DiasController extends Controller
 
         }
     }
+
+   
+
 
     public function show($id)
     {
