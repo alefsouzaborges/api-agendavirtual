@@ -21,6 +21,7 @@ class CreateDiasDisponiveisTable extends Migration
             $table->string('nome_dia');
             $table->string('mes');
             $table->string('nome_mes');
+            $table->string('ano');
             $table->timestamps();
         });
     }
