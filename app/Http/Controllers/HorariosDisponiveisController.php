@@ -67,7 +67,7 @@ class HorariosDisponiveisController extends Controller
         //
     }
 
-    public function up  date(Request $request, $id)
+    public function update(Request $request, $id)
     {
         //
     }
