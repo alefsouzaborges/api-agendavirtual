@@ -13,6 +13,7 @@ use App\Http\Controllers\MesesController;
 use App\Http\Controllers\DiasController;
 use App\Http\Controllers\DiasDisponiveisController;
 use App\Http\Controllers\HorariosController;
+use App\Http\Controllers\HorariosDisponiveisController;
 
 
 Route::get('usuarios/', [UsuarioController::class, 'index']);
@@ -59,3 +60,5 @@ Route::post('/dias-disponiveis-remove', [DiasDisponiveisController::class, 'dias
 Route::post('/dias-disponiveis', [DiasDisponiveisController::class, 'store']);
 Route::post('/dias-disponiveis-delete', [DiasDisponiveisController::class, 'destroy']);
 Route::get('/horarios', [HorariosController::class, 'index']);
+Route::post('/horarios-disponiveis', [HorariosDisponiveisController::class, 'store']);
+Route::post('/horarios-disponiveis-consulta', [HorariosDisponiveisController::class, 'index']);

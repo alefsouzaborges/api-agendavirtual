@@ -3,80 +3,81 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\HorariosDisponiveis;
+use Illuminate\Support\Facades\DB;
 
 class HorariosDisponiveisController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $email_empresa = $request['email_empresa'];
+        $email_funcionario = $request['email_funcionario'];
+        $dia = $request['dia'];
+        $mes = $request['mes'];
+        $ano = $request['ano'];
+
+        $HorariosDisponiveis = DB::select("SELECT * FROM horarios_disponiveis WHERE email_empresa = '${email_empresa}'
+        and email_funcionario = '${email_funcionario}' and dia = '${dia}' and mes = '${mes}' and ano = '${ano}'");
+
+        if(count($HorariosDisponiveis) > 0){
+            return response()->json(array('success' => true, 'response' => $HorariosDisponiveis));
+        }else{
+            return response()->json(array('success' => false, 'response' => 'Nenhum hoarrio disponiveil cadastrado.'));
+        }
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $email_empresa = $request['email_empresa'];
+        $email_funcionario = $request['email_funcionario'];
+        $dia = $request['dia'];
+        $mes = $request['mes'];
+        $ano = $request['ano'];
+        $hora = $request['hora'];
+
+        $query = DB::select("SELECT * FROM horarios_disponiveis WHERE email_empresa = '${email_empresa}'
+        and email_funcionario = '${email_funcionario}' and dia = '${dia}' and mes = '${mes}' and ano = '${ano}' and hora = '${hora}'");
+
+        if(count($query) > 0){
+
+            return response()->json(array('success' => true, 'response' => 'Horario selecionado já existe na lista.'));
+
+        }else{
+            $HorariosDisponiveis = new HorariosDisponiveis;
+
+            $HorariosDisponiveis->email_funcionario = $request['email_funcionario'];
+            $HorariosDisponiveis->email_empresa = $request['email_empresa'];
+            $HorariosDisponiveis->hora = $request['hora'];
+            $HorariosDisponiveis->dia = $request['dia'];
+            $HorariosDisponiveis->mes = $request['mes'];
+            $HorariosDisponiveis->ano = $request['ano'];
+
+            if($HorariosDisponiveis->save()){
+                return response()->json(array('success' => true, 'response' => 'Horario disponivel adicionado.'));
+            }else{
+                return response()->json(array('success' => false, 'response' => 'Não foi possivel aidiconar o horario selecionado.'));
+            }
+
+        }
+
+        // if($HorariosDisponiveis->save()){
+        //     return response()->json(array('success' => true, 'response' => 'Horario disponivel adicionado.'));
+        // }else{
+        //     return response()->json(array('success' => false, 'response' => 'Erro ao tentar adicionar o horario disponivel.'));
+        // }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
