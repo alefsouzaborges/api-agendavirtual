@@ -18,9 +18,17 @@ class UsuarioController extends Controller
         //
     }
 
-    public function show($id)
-    {
-        //
+    public function lstar_empresas(Request $request)
+    {   
+        $nome = '%'.$request['nome'].'%';
+        $Empresas = DB::select("SELECT * FROM usuarios WHERE tipo = 'Empresa' and nome like '${nome}' ");
+
+        if(count($Empresas) > 0){
+            return response()->json(array('success' => true, 'response' => $Empresas));
+        }else{
+            return response()->json(array('success' => true, 'response' => 'Nenhuma empresa encontrada!'));
+        }
+
     }
 
     public function edit($id)

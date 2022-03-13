@@ -63,3 +63,5 @@ Route::get('/horarios', [HorariosController::class, 'index']);
 Route::post('/horarios-disponiveis', [HorariosDisponiveisController::class, 'store']);
 Route::post('/horarios-disponiveis-consulta', [HorariosDisponiveisController::class, 'index']);
 Route::post('/horarios-disponiveis-remove', [HorariosDisponiveisController::class, 'destroy']);
+///////////////////////////////////////////////////////////////////////////////////////////////
+ROute::post('/listar-empresas', [UsuarioController::class, 'lstar_empresas']);
