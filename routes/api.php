@@ -62,3 +62,4 @@ Route::post('/dias-disponiveis-delete', [DiasDisponiveisController::class, 'dest
 Route::get('/horarios', [HorariosController::class, 'index']);
 Route::post('/horarios-disponiveis', [HorariosDisponiveisController::class, 'store']);
 Route::post('/horarios-disponiveis-consulta', [HorariosDisponiveisController::class, 'index']);
+Route::post('/horarios-disponiveis-remove', [HorariosDisponiveisController::class, 'destroy']);

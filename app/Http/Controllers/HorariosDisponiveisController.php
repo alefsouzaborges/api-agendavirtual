@@ -60,12 +60,6 @@ class HorariosDisponiveisController extends Controller
             }
 
         }
-
-        // if($HorariosDisponiveis->save()){
-        //     return response()->json(array('success' => true, 'response' => 'Horario disponivel adicionado.'));
-        // }else{
-        //     return response()->json(array('success' => false, 'response' => 'Erro ao tentar adicionar o horario disponivel.'));
-        // }
     }
 
     public function show($id)
@@ -73,13 +67,21 @@ class HorariosDisponiveisController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function up  date(Request $request, $id)
     {
         //
     }
 
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request)
+    {   
+        $id = $request['id'];
+        $HorariosDisponiveis = DB::delete("DELETE FROM horarios_disponiveis WHERE id = '${id}'");
+
+        if($HorariosDisponiveis){
+            return response()->json(array('success' => true, 'response' => 'Horario removido com sucesso!'));
+        }else{
+            return response()->json(array('success' => false, 'response' => 'Não foi possivel remover o horario selecionado.'));
+        }
+
     }
 }
