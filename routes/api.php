@@ -12,6 +12,7 @@ use App\Http\Controllers\AnoController;
 use App\Http\Controllers\MesesController;
 use App\Http\Controllers\DiasController;
 use App\Http\Controllers\DiasDisponiveisController;
+use App\Http\Controllers\HorariosController;
 
 
 Route::get('usuarios/', [UsuarioController::class, 'index']);
@@ -57,4 +58,4 @@ Route::post('/dia', [DiasController::class, 'store']);
 Route::post('/dias-disponiveis-remove', [DiasDisponiveisController::class, 'dias_disponivel']);
 Route::post('/dias-disponiveis', [DiasDisponiveisController::class, 'store']);
 Route::post('/dias-disponiveis-delete', [DiasDisponiveisController::class, 'destroy']);
-
+Route::get('/horarios', [HorariosController::class, 'index']);

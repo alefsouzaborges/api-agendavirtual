@@ -40,10 +40,12 @@ class UsuarioController extends Controller
     ///////////////////////////////////////////////
     public function login(Request $request)
     {
-         $email = $request['email'];
-         $senha = $request['senha'];
-         $usuarios = DB::select("Select * from usuarios where email = '${email}' and senha = '${senha}'");
-         
+        
+          $email = $request['email'];
+          $senha = $request['senha'];
+          $usuarios = DB::select("Select * from usuarios where email = '${email}' and senha = '${senha}'");
+
+          
          if(count($usuarios) >0){
             return response()->Json(array('success' => true, 'response' => $usuarios));
          }else{
